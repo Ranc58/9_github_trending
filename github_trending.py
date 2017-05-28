@@ -22,5 +22,9 @@ def print_most_trended_repos(trended_new_repos):
 
 
 if __name__ == '__main__':
-    trended_new_repos = get_repositories_json()
-    print_most_trended_repos(trended_new_repos)
+    try:
+        trended_new_repos = get_repositories_json()
+    except requests.exceptions.ConnectionError:
+        print('Failed! Check Your connection.')
+    else:
+        print_most_trended_repos(trended_new_repos)
