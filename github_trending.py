@@ -17,8 +17,11 @@ def get_repositories_json():
 
 def print_most_trended_repos(trended_new_repos):
     for repo in trended_new_repos:
-        print('Repository {} has {} open issuses.'.
-              format(repo['html_url'], repo['open_issues_count']))
+        print('\nRepository: {}\nlink: {}\nstars: {}\nopen issues: {}\n'.format
+              (repo['name'],
+               repo['html_url'],
+               repo['stargazers_count'],
+               repo['open_issues_count']))
 
 
 if __name__ == '__main__':
