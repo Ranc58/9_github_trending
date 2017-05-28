@@ -7,10 +7,11 @@ def get_repositories_json():
     todays_date = datetime.date.today()
     date_period = datetime.timedelta(days=7)
     date_interval_for_search = (todays_date - date_period)
+    repo_sort_type = 'sort=stars'
+    repos_quantity = 'per_page=20'
     api_return_repos = requests.get(
-        'https://api.github.com/search/'
-        'repositories?q=created:%3E={}&sort=stars&per_page=20'
-        .format(date_interval_for_search))
+        'https://api.github.com/search/repositories?q=created:%3E={}&{}&{}'
+        .format(date_interval_for_search, repo_sort_type, repos_quantity))
     trended_new_repos_json = api_return_repos.json()['items']
     return trended_new_repos_json
 
